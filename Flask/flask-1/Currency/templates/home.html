@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+
+    <form action="/" method="POST">
+        <label for="search_currency">Converting From:</label>
+        <input type="text" name="search_currency" required>
+        <br>
+        <label for="target_currency">Converting To:</label>
+        <input type="text" name="target_currency" required>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" step="0.01" name="amount" required>
+        <br>
+        <input type="submit" value="Convert">
+    </form>
+
+    {% if result %}
+    <div>
+        <h2>Conversion Result:</h2>
+        <p>{{ result }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
+
