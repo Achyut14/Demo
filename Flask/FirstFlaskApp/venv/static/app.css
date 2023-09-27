@@ -1,0 +1,29 @@
+h1 {
+    color: blue;
+}
+body{
+    background-color: brown;
+}
+
+.navbar {
+    background-color: black;
+    overflow: hidden;
+
+} 
+.navbar a {
+    float: left;
+    text-align: center;
+    color: white;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+.messages .success{
+    border: 2px solid green
+
+}
+
+.messages .error {
+    border: 2px solid red;
+
+}
