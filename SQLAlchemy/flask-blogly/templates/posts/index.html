@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blogly</title>
+</head>
+<body>
+    <h1>Blogly Recent Posts</h1>
+
+    <!-- Loop through the posts -->
+    {% for post in posts %}
+        <h2 class="mt-4">
+            <a href="/posts/{{ post.id }}">{{ post.title }}</a>
+        </h2>
+        <p>{{ post.content }}</p>
+        <p>
+            <small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small>
+        </p>
+    {% endfor %}
+</body>
+</html>
