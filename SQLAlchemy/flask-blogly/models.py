@@ -15,7 +15,7 @@ DEFAULT_IMAGE_URL = "https://www.freeiconspng.com/uploads/icon-user-blue-symbol-
 
 
 class User(db.Model):
-    __tabelname__ = 'users'
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer,
                    primary_key=True,
@@ -32,7 +32,7 @@ class User(db.Model):
                           nullable=False,
                           default= DEFAULT_IMAGE_URL)
     
-    dept = db.relationship('Post', backref='User', cascade="all, delete-orphan")
+    posts = db.relationship('Post', backref='user', cascade="all, delete-orphan")
     
 
     @property
@@ -42,7 +42,7 @@ class User(db.Model):
     
 
 class Post(db.Model):
-    __tablename__ = 'post'
+    __tablename__ = 'posts'
 
     id = db.Column(db.Integer,
                    primary_key = True,
@@ -60,13 +60,40 @@ class Post(db.Model):
                            nullable = False,
                            default = datetime.datetime.now)
     
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    # tagging = db.relationship('PostTag', backref='posts')
+    # posting = db.relationship('Tag', secondary="posts_tag", backref="post")
 
     @property
     def friendly_date(self):
         """Return nicely-formatted date."""
 
         return self.created_at.strftime("%a %b %-d  %Y, %-I:%M %p")
+    
+
+class Tag(db.Model):
+    __tablename__='tags'
+
+    id=db.Column(db.Integer,
+                primary_key = True)
+    
+    name = db.Column(db.Text,
+                     nullable = False,
+                     unique=True)
+    
+    posts = db.relationship('Post', secondary ="posts_tag", backref='tags')
+    
+
+class PostTag(db.Model):
+
+    __tablename__ = 'posts_tag'
+
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"),
+                        primary_key=True)
+    
+    tags_id = db.Column(db.Integer, db.ForeignKey("tags.id"), 
+                       primary_key = True)
 
     
    
