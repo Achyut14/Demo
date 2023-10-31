@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>All Playlists</h1>
+    {% if playlists %}
+        <ul>
+            {% for playlist in playlists %}
+                <div class="jumbotron">
+                  <h2><a href="/playlists/{{ playlist.id }}">{{ playlist.name }}</a></h2>
+                  {% if playlist.description %}
+                  <p class="lead">{{ playlist.description }}</p>
+                  {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No playlists found.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
