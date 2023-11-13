@@ -2,7 +2,7 @@
 from flask import Flask, render_template, flash, request, jsonify, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
-from models import db, connect_db, CreateUsers, SaveArtical
+from models import db, connect_db, CreateUsers
 from forms import AddUsers, Login, SearchForm
 from functools import wraps
 from config import API_KEY
