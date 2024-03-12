@@ -1,0 +1,91 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* AppStyles.css */
+
+/* Styles for VendingMachine */
+.vending-machine-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.vending-machine-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.vending-machine-list li {
+  margin: 10px 0;
+}
+
+.vending-machine-list li a {
+  text-decoration: none;
+  color: blue;
+}
+
+/* Styles for Soda */
+.soda-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.soda-title {
+  color: #007bff;
+  font-size: 24px;
+}
+
+.soda-description {
+  margin: 20px auto;
+  font-size: 18px;
+  color: #333;
+}
+
+.soda-back-link {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.soda-back-link:hover {
+  background-color: #0056b3;
+}

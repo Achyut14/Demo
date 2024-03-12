@@ -1,0 +1,18 @@
+.vending-machine-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.vending-machine-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.vending-machine-list li {
+    margin: 10px 0;
+}
+
+.vending-machine-list li a {
+    text-decoration: none;
+    color: blue;
+}
