@@ -8,6 +8,7 @@ from functools import wraps
 from config import API_KEY
 app = Flask(__name__)
 
+#Configure application settings
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///capstone'
 app.app_context().push()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -15,10 +16,12 @@ app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
+#Connect to the database and create all tables if they don't exist
 connect_db(app)
 with app.app_context():
     db.create_all()
 
+#Render the home page
 @app.route('/')
 def home_page():
     return render_template("index.html")
@@ -29,8 +32,10 @@ def create_account():
 
     if form.is_submitted():
         if form.validate():
+            #Generate a hashed password for security
             hashed_password = generate_password_hash(form.create_password.data, method='pbkdf2:sha256:15000')
             
+            #Create a new user instance
             new_user = CreateUsers(
                 firstname=form.first_name.data,
                 lastname=form.last_name.data,
@@ -47,7 +52,7 @@ def create_account():
                 flash("Account created successfully! You can now log in.", 'success')
                 return redirect(url_for('login'))
             except Exception as e:
-                db.session.rollback()
+                db.session.rollback() #Roll back the session in case of an error
                 flash(f"Error creating account: {str(e)}", 'danger')
 
         else:
@@ -70,6 +75,7 @@ def login():
         if user:
             print("User exists in database: ", user.username)
             
+            #Successfull login
             if check_password_hash(user.password, password):
                 session['logged_in'] = True
                 session['user_id'] = user.id
@@ -87,6 +93,7 @@ def login():
 
 
 def login_required(f):
+    #Decorator to protect routes that require authentication
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'logged_in' not in session:
@@ -98,6 +105,7 @@ def login_required(f):
 @app.route('/login/account')
 @login_required
 def your_account():
+    #Account details page
     form = SearchForm()
     first_name = session.get('first_name', '')
     last_name = session.get('last_name', '')
@@ -106,6 +114,7 @@ def your_account():
 @app.route('/debug-session')
 @login_required
 def debug_session():
+    #A debug route to display session details
     return jsonify(dict(session))
 
 @app.route("/logout")
