@@ -32,8 +32,6 @@ The chosen features enhance user engagement by providing personalized and intera
 ### Using an External API
 The decision to use the SoccerLive API was based on its extensive dataset and reliability in delivering up-to-date soccer statistics. This allows our application to provide detailed and accurate information without the overhead of maintaining a custom data collection backend.
 
-### Creating Our Own API
-If applicable, describe the process of designing and implementing your custom API here.
 
 ## Technology Stack
 - **Frontend**: React.js
