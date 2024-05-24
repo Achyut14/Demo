@@ -19,7 +19,11 @@ The database schema for this project is defined in the `schema.sql` file located
 # Soccer Match Search 
 
 ## Project Overview
-Welcome to the Soccer Stats Dashboard! This application provides real-time statistics on soccer matches, allowing users to explore, analyze, and save match data. 
+Welcome to the Soccer Stats Dashboard! This application provides real-time statistics on soccer matches, allowing users to explore, analyze, and save match data.
+
+## Title: Soccer Match Search
+## URL: https://polar-waters-72692-16d627fdc711.herokuapp.com/
+
 
 ## Features
 - **User Authentication**: Users can sign up, log in, and manage their profiles.
